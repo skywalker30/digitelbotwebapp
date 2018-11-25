@@ -1,0 +1,61 @@
+{
+  "name": "digitelbotwebapp",
+  "padlock": "L9AOeDJyJn19S9/JT4uBzw==!jw96yMlxLbZsLNGJ97/+rhp9gIAoz6oqHo94VJIyk8ZfJVWhLQg3hQuzEyk5hBF/",
+  "version": "2.0",
+  "services": [
+    {
+      "tenantId": "fb16744b-4e60-4966-a292-33ab894148b9",
+      "subscriptionId": "ab15e703-591b-4363-b6d9-e110ec9e137e",
+      "resourceGroup": "romangroup",
+      "serviceName": "digitelbotwebapp",
+      "type": "abs",
+      "name": "digitelbotwebapp",
+      "id": "1"
+    },
+    {
+      "connectionString": "hmKVRZaLZdcrHmjly3wZdg==!wDhmr81b9TAIUB0I+3+O66eykOCcGNjQtGmqd/u27OqOtmi5Em1GiuB8W7cPxVZvKef9Rdpc5/cDjH6YTyCEyNlaNHYMd0v24ZuBSqvrKxKFHI/VjnHDjkmmJRRi3D14m2MCs6A79RfhPbOvD5Vmsn0SJAXWQqF2UXwFimJQDw1UllWBd9QlD7gHtnLJUNQABvr6Oa8cq2GtR01rGVSML5elkOVhDnReE976SKWoXg4=",
+      "tenantId": "fb16744b-4e60-4966-a292-33ab894148b9",
+      "subscriptionId": "ab15e703-591b-4363-b6d9-e110ec9e137e",
+      "resourceGroup": "romangroup",
+      "serviceName": "digitelbotwebapp8118",
+      "type": "blob",
+      "id": "2"
+    },
+    {
+      "appId": "",
+      "appPassword": "",
+      "endpoint": "http://localhost:3978/api/messages",
+      "type": "endpoint",
+      "name": "development",
+      "id": "3"
+    },
+    {
+      "appId": "f7da4069-dc08-4e06-8abd-965d27cffab2",
+      "appPassword": "xAyyu92A2eK09649AGbs8Q==!CDTiNx2/kdSe3jOSKvJ4a1X9hOpW0faNv/MDc1jiY0U=",
+      "endpoint": "https://digitelbotwebapp.azurewebsites.net/api/messages",
+      "type": "endpoint",
+      "name": "production",
+      "id": "4"
+    },
+    {
+      "instrumentationKey": "F7V3mh+tqTN2l4+Y563xhg==!BFD+f/miLErjMOLRris1d/FDYbksVn9Q4pFhyAUtPGFMH8LvxyGfIVE+f9e4KsTI",
+      "applicationId": "d64c8498-38aa-44db-9bbf-60c148e27d01",
+      "apiKeys": {},
+      "tenantId": "fb16744b-4e60-4966-a292-33ab894148b9",
+      "subscriptionId": "ab15e703-591b-4363-b6d9-e110ec9e137e",
+      "resourceGroup": "romangroup",
+      "serviceName": "digitelbotwebappb6ow5u",
+      "type": "appInsights",
+      "id": "5"
+    },
+    {
+      "appId": "c88e41ce-1eca-4473-bec6-e4dad5f71bf6",
+      "authoringKey": "PcDpUdw8bAUDoyTRp8tVzw==!uXJEDBfNVzPbNOSAp0IrRWyyEqThB5dTOmijCeR8YOwEOM+JPstYizuaAmv+uwve",
+      "version": "0.1",
+      "region": "westeurope",
+      "type": "luis",
+      "name": "BasicBotLuisApplication",
+      "id": "6"
+    }
+  ]
+}
