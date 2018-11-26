@@ -122,7 +122,7 @@ namespace Microsoft.BotBuilderSamples
                                 default:
                                     // Help or no intent identified, either way, let's provide some help.
                                     // to the user
-                                    await dc.Context.SendActivityAsync("Pashti lemati.");
+                                    await dc.Context.SendActivityAsync("Hello world!!!.");
                                     break;
                             }
 
