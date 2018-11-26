@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using BasicBot.Dialogs;
 using Microsoft.Bot.Builder;
 using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Schema;
@@ -32,7 +33,7 @@ namespace Microsoft.BotBuilderSamples
         /// </summary>
         public static readonly string LuisConfiguration = "BasicBotLuisApplication";
 
-        private readonly IStatePropertyAccessor<GreetingState> _greetingStateAccessor;
+        private readonly IStatePropertyAccessor<HazardState> _hazardStateAccessor;
         private readonly IStatePropertyAccessor<DialogState> _dialogStateAccessor;
         private readonly UserState _userState;
         private readonly ConversationState _conversationState;
@@ -49,7 +50,7 @@ namespace Microsoft.BotBuilderSamples
             _userState = userState ?? throw new ArgumentNullException(nameof(userState));
             _conversationState = conversationState ?? throw new ArgumentNullException(nameof(conversationState));
 
-            _greetingStateAccessor = _userState.CreateProperty<GreetingState>(nameof(GreetingState));
+            _hazardStateAccessor = _userState.CreateProperty<HazardState>(nameof(HazardState));
             _dialogStateAccessor = _conversationState.CreateProperty<DialogState>(nameof(DialogState));
 
             // Verify LUIS configuration.
@@ -59,7 +60,7 @@ namespace Microsoft.BotBuilderSamples
             }
 
             Dialogs = new DialogSet(_dialogStateAccessor);
-            Dialogs.Add(new GreetingDialog(_greetingStateAccessor, loggerFactory));
+            Dialogs.Add(new HazardDialog(_hazardStateAccessor, loggerFactory));
         }
 
         private DialogSet Dialogs { get; set; }
@@ -115,14 +116,14 @@ namespace Microsoft.BotBuilderSamples
                             switch (topIntent)
                             {
                                 case GreetingIntent:
-                                    await dc.BeginDialogAsync(nameof(GreetingDialog));
+                                    await dc.BeginDialogAsync(nameof(HazardDialog));
                                     break;
 
                                 case NoneIntent:
                                 default:
                                     // Help or no intent identified, either way, let's provide some help.
                                     // to the user
-                                    await dc.Context.SendActivityAsync("Hello world!!!.");
+                                    //await dc.Context.SendActivityAsync("Hello world!!!.");
                                     break;
                             }
 
@@ -230,7 +231,7 @@ namespace Microsoft.BotBuilderSamples
             if (luisResult.Entities != null && luisResult.Entities.HasValues)
             {
                 // Get latest GreetingState
-                var greetingState = await _greetingStateAccessor.GetAsync(turnContext, () => new GreetingState());
+                var greetingState = await _hazardStateAccessor.GetAsync(turnContext, () => new HazardState());
                 var entities = luisResult.Entities;
 
                 // Supported LUIS Entities
@@ -246,7 +247,7 @@ namespace Microsoft.BotBuilderSamples
                     {
                         // Capitalize and set new user name.
                         var newName = (string)entities[name][0];
-                        greetingState.Name = char.ToUpper(newName[0]) + newName.Substring(1);
+                        greetingState.Id = char.ToUpper(newName[0]) + newName.Substring(1);
                         break;
                     }
                 }
@@ -257,13 +258,13 @@ namespace Microsoft.BotBuilderSamples
                     {
                         // Capitalize and set new city.
                         var newCity = (string)entities[city][0];
-                        greetingState.City = char.ToUpper(newCity[0]) + newCity.Substring(1);
+                        greetingState.Problem = char.ToUpper(newCity[0]) + newCity.Substring(1);
                         break;
                     }
                 }
 
                 // Set the new values into state.
-                await _greetingStateAccessor.SetAsync(turnContext, greetingState);
+                await _hazardStateAccessor.SetAsync(turnContext, greetingState);
             }
         }
     }
